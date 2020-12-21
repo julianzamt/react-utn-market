@@ -10,7 +10,7 @@ function Login(){
             <Form onSubmit={handleSubmit}>
                 <Form.Control type="text" placeholder="Nombre de usuario" /><br></br>
                 <Form.Control type="password" placeholder="Contraseña" /><br></br>
-                <Button variant="primary" type="submit">Entrar</Button>
+                <Button variant="secondary" type="submit">Entrar</Button>
             </Form>
         </div>
     )
