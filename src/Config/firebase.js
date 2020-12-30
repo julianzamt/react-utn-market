@@ -16,5 +16,7 @@ firebase.analytics();
 const db = firebase.firestore();
 firebase.auth = firebase.auth();
 
+// Esto lo puso leandro y no sé qué es 
+firebase.db = db;
 
 export default firebase

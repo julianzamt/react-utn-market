@@ -14,7 +14,13 @@ function Registro(){
         confirmation: ''})
 
     function handleSubmit(e){
+        console.log(form)
+        firebase.auth.createUserWithEmailAndPassword(email, password)
+        .then((data) =>{
+            console.log("Usuario creado ", data.user.uid)
+        })
         e.preventDefault()
+        return
     }
 
     function handleChange(e){
@@ -38,7 +44,7 @@ function Registro(){
             <Form.Control type="email" name="email" value={form.email} placeholder="Email" onChange={handleChange} /><br></br>
             <Form.Control type="password" name="password" value={form.password} placeholder="Contraseña" onChange={handleChange} /><br></br>
             <Form.Control type="password" name="confirmation" value={form.confirmation} placeholder="Confirme la contraseña" onChange={handleChange} /><br></br>
-            <Button variant="primary">Registrarse</Button>
+            <Button variant="primary" type="submit">Registrarse</Button>
         </Form>
         </div>
     )
