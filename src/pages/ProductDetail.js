@@ -1,30 +1,51 @@
 import { Link } from "react-router-dom"
 import Button from 'react-bootstrap/Button'
+import firebase from '../Config/firebase'
+import React, { useState, useEffect } from "react"
 
 function ProductDetail(props){
-    const { details } = props.location
+    const [ product, setProduct ] = useState({})
+    const [ isLoading, setIsLoading ] = useState(false)
+
+    useEffect(()=>{
+        setIsLoading(true)
+        firebase.db.doc("Productos/"+props.match.params.number)
+        .get()
+        .then(doc =>{
+            setProduct(doc.data())
+            setIsLoading(false)
+        })
+        .catch((err)=>{
+            console.log(err)
+            setIsLoading(false)
+        })
+    }, [])
+   
     function handleClick(e){
         e.target.innerHTML = "Gracias por su compra!"
         e.target.style.backgroundColor = "yellow"
         e.target.style.color="green"
     }
-    return (
+    if (isLoading) {
+        return <p className="loader">Loading...</p>
+    }
+    else {
+        return (
         <div className="producto">
-            <h2>{details.name}</h2>
-            <img src={details.photo_url} 
+            <h2>{product.name}</h2>
+            <img src={product.photo_url} 
                 style={{ maxWidth: 300,
                          maxHeight: 300 }}></img>
-            <h4>${details.price}</h4>
-            <p>{details.description}</p>
-            <p className="stock">Stock: {details.stock}</p>
+            <h4>${product.price}</h4>
+            <p>{product.description}</p>
+            <p className="stock">Stock: {product.stock}</p>
             <Button variant="success" className="mb-2" onClick={handleClick}>Comprar</Button><br></br>
             <Link to={'/'} style={{textDecoration:'none'}}>
                 <Button variant="primary" className="btn-sm">Volver al home</Button>
             </Link>
         </div>
-    )
+        )
+    }
 }
 
 export default ProductDetail
-
-/*  */

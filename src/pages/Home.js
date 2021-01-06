@@ -1,30 +1,33 @@
 import React, { useState, useEffect } from "react"
 import Producto from "../components/Producto.js"
 import CardDeck from 'react-bootstrap/CardDeck'
+import firebase from "../Config/firebase"
 
 function Home(){
     const [ products, setProducts ] = useState("")
     const [ isLoading, setIsLoading ] = useState(false)
 
-    useEffect(() => {
+   useEffect(() => {
         setIsLoading(true)
-        fetch("https://jsonfy.com/items")
-        .then(response => response.json())
-        .then(data => {
-        const products = data.map(item => 
+        firebase.db.collection("Productos")
+        .get()
+        .then((querySnapshot) => {
+            console.log(querySnapshot.docs)
+            const products = querySnapshot.docs.map(item =>  
             <Producto 
             key={item.id}
             id={item.id} 
-            name={item.name} 
-            description={item.description}
-            price={item.price}
-            photo_url={item.photo_url}
-            stock={item.stock}
+            name={item.data().name} 
+            description={item.data().description}
+            price={item.data().price}
+            photo_url={item.data().photo_url}
+            stock={item.data().stock}
             />)
-        setProducts(products)
-        setIsLoading(false)
+            setProducts(products)
+            setIsLoading(false)
         })
-    }, [])
+    }, []) 
+
 
     if (isLoading) {
         return <p className="loader">Loading...</p>

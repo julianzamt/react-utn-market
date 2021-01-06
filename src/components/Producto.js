@@ -14,9 +14,7 @@ function Producto(props){
             </Card.Text>
             
         </Card.Body>
-        <Link to={{
-            pathname: "/" + props.id,
-            details: props}}>
+        <Link to={"/" + props.id}>
             <Button variant="primary">Ver Detalle</Button>
         </Link>
     </Card>
