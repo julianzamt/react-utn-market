@@ -1,9 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Spinner from 'react-bootstrap/Spinner'
 import firebase from '../Config/firebase'
 import Alert from 'react-bootstrap/Alert'
+import { useHistory } from "react-router-dom"
+import AppContext from "../context/AppContext"
 
 function Registro(){
     const [ form, setForm ] = useState({
@@ -17,7 +19,9 @@ function Registro(){
     const [ spinner, setSpinner ] = useState(false)
     const [ error , setError ] = useState(false)
     const [ errorMessage, setErrorMessage ] = useState("")
-    const [ success, setSuccess ] = useState(false)
+
+    const history = useHistory()
+    const context = useContext(AppContext)
 
     function handleSubmit(e){
         setSpinner(true)
@@ -25,6 +29,7 @@ function Registro(){
         const password = form.password
         firebase.auth.createUserWithEmailAndPassword(email, password)
         .then((data) =>{
+            history.push("/")
             firebase.db.collection("Usuarios").add({
                 username: form.username,
                 first: form.first,
@@ -32,8 +37,18 @@ function Registro(){
                 email: form.email,
                 userId: data.user.uid
             })
-            setSuccess(true)
-            setSpinner(false)
+            context.registryFeedbackIn()
+        })
+        .then(() => {
+            const email = form.email
+            const password = form.password
+            firebase.auth.signInWithEmailAndPassword(email, password)
+            .then((data) => {
+                history.push("/")
+                context.loginUser()
+                context.loginFeedbackIn()
+                setSpinner(false)
+            })
         })
         .catch((err) => {
             setError(true)
@@ -59,7 +74,6 @@ function Registro(){
         <div className="container mt-3 text-center">
         <h2>Crear cuenta nueva</h2>
         {error ? <Alert variant="danger">{errorMessage}</Alert> : null }
-        {success ? <Alert variant="success">Usuario creado con éxito</Alert> : null }
         <Form onSubmit={handleSubmit}>
             <Form.Control type="text" name="username" value={form.username} placeholder="Nombre de usuario" onChange={handleChange} /><br></br>
             <Form.Control type="text" name="first" value={form.first} placeholder="Nombre" onChange={handleChange} /><br></br>

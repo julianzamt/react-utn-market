@@ -1,32 +1,41 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import Producto from "../components/Producto.js"
 import CardDeck from 'react-bootstrap/CardDeck'
 import firebase from "../Config/firebase"
+import Alert from 'react-bootstrap/Alert'
+import AppContext from "../context/AppContext"
 
 function Home(){
     const [ products, setProducts ] = useState("")
     const [ isLoading, setIsLoading ] = useState(false)
 
-   useEffect(() => {
+    const context = useContext(AppContext)
+
+    useEffect(() => {
         setIsLoading(true)
         firebase.db.collection("Productos")
         .get()
         .then((querySnapshot) => {
-            console.log(querySnapshot.docs)
             const products = querySnapshot.docs.map(item =>  
             <Producto 
             key={item.id}
             id={item.id} 
             name={item.data().name} 
-            description={item.data().description}
             price={item.data().price}
             photo_url={item.data().photo_url}
-            stock={item.data().stock}
             />)
             setProducts(products)
             setIsLoading(false)
         })
-    }, []) 
+    }, [])
+
+    const closeRegistryAlert = () => {
+        context.registryFeedbackOut()
+    }
+
+    const closeLoginAlert = () => {
+        context.loginFeedbackOut()
+    }
 
 
     if (isLoading) {
@@ -34,7 +43,13 @@ function Home(){
     }
     else {
         return (
-        <div>
+        <div className="text-center">
+            {context.registryFeedback ? 
+            <Alert variant="success" onClose={closeRegistryAlert} dismissible>Usuario/a registrado/a con éxito</Alert> 
+            : null}
+            {context.loginMessage ? 
+            <Alert variant="success" onClose={closeLoginAlert} dismissible>Bienvenido/a, </Alert> 
+            : null}
             <CardDeck style={{margin:"2em"}}>
                 {products}
             </CardDeck>

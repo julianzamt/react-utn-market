@@ -5,18 +5,21 @@ import Home from "./pages/Home"
 import Registro from "./pages/Registro"
 import Login from "./pages/Login"
 import NoMatch from "./pages/NoMatch"
+import GlobalState from "./context/GlobalState"
 
 function Routes() {
     return (
     <div>
-        <NavBar />
-        <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/registro' component={Registro} />
-            <Route exact path='/login' component={Login} />
-            <Route path='/:number' component={ProductDetail} />
-            <Route component={NoMatch} />
-        </Switch>
+        <GlobalState>
+            <NavBar />
+            <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/registro' component={Registro} />
+                <Route exact path='/login' component={Login} />
+                <Route path='/:number' component={ProductDetail} />
+                <Route component={NoMatch} />
+            </Switch>
+        </GlobalState>
     </div>
     )
 }
