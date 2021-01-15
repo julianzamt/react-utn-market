@@ -43,10 +43,13 @@ function Registro(){
             const email = form.email
             const password = form.password
             firebase.auth.signInWithEmailAndPassword(email, password)
-            .then((data) => {
+            .then((querySnapshot) => {
                 history.push("/")
-                context.loginUser()
-                context.loginFeedbackIn()
+                const data = querySnapshot.docs.map((doc) => ({
+                    ...doc.data()
+                }))
+                console.log(data)
+                context.setUsername(data[0].username) 
                 setSpinner(false)
             })
         })

@@ -4,11 +4,12 @@ import { useHistory } from "react-router-dom"
 
 function GlobalState(props) {
     const [ login, setLogin ] = useState(localStorage.getItem("login"))
-    const [ loginMessage, setLoginMessage ] = useState(false)
-    const [ username, setUsername ] = useState("")
+    const [ username, setUsername ] = useState(localStorage.getItem("username"))
     const [ logoutMessage, setLogoutMessage ] = useState(false)
     const [ registryFeedback, setRegistryFeedback ] = useState(false)
+    const [ validProducts, setValidProducts ] = useState("")
     const history = useHistory()
+
     
     const loginUser = () => {
         setLogin(true)
@@ -16,16 +17,9 @@ function GlobalState(props) {
     }
     const logoutUser = () => {
         setLogin(false)
-        setLoginMessage(false)
         setLogoutMessage(true)
-        localStorage.removeItem("login")
+        localStorage.clear()
         history.push("/login")
-    }
-    const loginFeedbackIn = () => {
-        setLoginMessage(true)
-    }
-    const loginFeedbackOut = () => {
-        setLoginMessage(false)
     }
     const logoutFeedbackIn = () => {
         setLogoutMessage(true)
@@ -39,15 +33,13 @@ function GlobalState(props) {
     const registryFeedbackOut = () => {
         setRegistryFeedback(false)
     }
+
     return(
         <AppContext.Provider
             value={{
                 login: login,
                 loginUser: loginUser,
                 logoutUser: logoutUser,
-                loginFeedbackIn: loginFeedbackIn,
-                loginFeedbackOut: loginFeedbackOut,
-                loginMessage: loginMessage,
                 logoutMessage: logoutMessage,
                 logoutFeedbackIn: logoutFeedbackIn,
                 logoutFeedbackOut: logoutFeedbackOut,
@@ -55,7 +47,9 @@ function GlobalState(props) {
                 registryFeedbackIn: registryFeedbackIn,
                 registryFeedbackOut: registryFeedbackOut,
                 username: username,
-                setUsername: setUsername
+                setUsername: setUsername,
+                validProducts: validProducts,
+                setValidProducts: setValidProducts
             }}
         >
             {props.children}

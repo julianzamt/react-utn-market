@@ -4,7 +4,6 @@ import ProductDetail from "./pages/ProductDetail"
 import Home from "./pages/Home"
 import Registro from "./pages/Registro"
 import Login from "./pages/Login"
-import NoMatch from "./pages/NoMatch"
 import GlobalState from "./context/GlobalState"
 import Footer from "./components/Footer"
 
@@ -18,7 +17,6 @@ function Routes() {
                 <Route exact path='/registro' component={Registro} />
                 <Route exact path='/login' component={Login} />
                 <Route path='/:number' component={ProductDetail} />
-                <Route component={NoMatch} />
             </Switch>
             <Footer />
         </GlobalState>

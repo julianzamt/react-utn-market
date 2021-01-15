@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import firebase from '../Config/firebase'
 import React, { useState, useEffect, useContext } from "react"
 import AppContext from "../context/AppContext"
+import Page404 from "./Page404"
 
 function ProductDetail(props){
     const [ product, setProduct ] = useState({})
@@ -29,8 +30,12 @@ function ProductDetail(props){
         e.target.style.backgroundColor = "yellow"
         e.target.style.color="green"
     }
+    
     if (isLoading) {
         return <p className="loader">Loading...</p>
+    }
+    else if (product === undefined) {
+        return <Page404 />
     }
     else {
         return (

@@ -38,17 +38,16 @@ function Login(){
         firebase.auth.signInWithEmailAndPassword(email, password)
         .then((data) => {
             context.loginUser()
-            context.loginFeedbackIn()
             userId = data.user.uid
             return (firebase.db.collection("Usuarios").where("userId", "==", userId).get())     
         }).then((querySnapshot) => {
-            //history.push("/")
             const data = querySnapshot.docs.map((doc) => ({
                 ...doc.data()
             }))
-            console.log(data)
+            localStorage.setItem("username", data[0].username)
+            context.setUsername(localStorage.getItem("username"))
             setSpinner(false)
-            //context.setUsername(doc.data().username) 
+            history.push("/")
         })
         .catch((err) =>{
             setError(err.message)
