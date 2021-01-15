@@ -6,6 +6,7 @@ import Registro from "./pages/Registro"
 import Login from "./pages/Login"
 import NoMatch from "./pages/NoMatch"
 import GlobalState from "./context/GlobalState"
+import Footer from "./components/Footer"
 
 function Routes() {
     return (
@@ -19,6 +20,7 @@ function Routes() {
                 <Route path='/:number' component={ProductDetail} />
                 <Route component={NoMatch} />
             </Switch>
+            <Footer />
         </GlobalState>
     </div>
     )

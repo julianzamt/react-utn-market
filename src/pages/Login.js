@@ -13,19 +13,20 @@ function Login(){
         password: ""
     })
     const [ spinner, setSpinner ] = useState(false)
-    const context = useContext(AppContext)
-    const [show, setShow] = useState(true);
     const [ error, setError ] = useState("")
     const [ errorFeedback, setErrorFeedback ] = useState(false)
 
+    const context = useContext(AppContext)
+
     const closeAlert = () => {
-        setShow(false)
         context.logoutFeedbackOut()
     }
 
     const closeError = () => {
         setErrorFeedback(false)
     }
+
+    let userId = ""
 
     const history = useHistory()
 
@@ -34,32 +35,26 @@ function Login(){
         setSpinner(true)
         const email = form.email
         const password = form.password
-        let userId = ""
         firebase.auth.signInWithEmailAndPassword(email, password)
         .then((data) => {
             context.loginUser()
             context.loginFeedbackIn()
             userId = data.user.uid
-            console.log(userId)
-            firebase.db.collection("Usuarios").where("userId", "==", "JcrY1i3K8UQOAlmoKcRR6HQkLpG3").get()
-        })
-        .then((querySnapshot) => {
+            return (firebase.db.collection("Usuarios").where("userId", "==", userId).get())     
+        }).then((querySnapshot) => {
             //history.push("/")
             const data = querySnapshot.docs.map((doc) => ({
                 ...doc.data()
             }))
             console.log(data)
-            //context.setUsername(doc.data().username)
             setSpinner(false)
+            //context.setUsername(doc.data().username) 
         })
         .catch((err) =>{
             setError(err.message)
             setErrorFeedback(true)
             setSpinner(false)
         })
-
-        
-        
     }
 
     function handleChange(e){
@@ -76,10 +71,8 @@ function Login(){
     return (
         <div className="container mt-3 text-center" >
             <h2>Login</h2>
-            {show ? 
-            context.logoutMessage ? 
-            <Alert variant="info" onClose={closeAlert} dismissible>Gracias por utilizar nuestros servicios</Alert> 
-            : null 
+            {context.logoutMessage ? 
+            <Alert variant="info" onClose={closeAlert} dismissible>Gracias por utilizar nuestros servicios</Alert>  
             : null }
             {errorFeedback ?
             <Alert variant="danger" onClose={closeError} dismissible>{error}</Alert>

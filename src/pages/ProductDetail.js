@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom"
 import Button from 'react-bootstrap/Button'
 import firebase from '../Config/firebase'
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
+import AppContext from "../context/AppContext"
 
 function ProductDetail(props){
     const [ product, setProduct ] = useState({})
     const [ isLoading, setIsLoading ] = useState(false)
+
+    const context = useContext(AppContext)
 
     useEffect(()=>{
         setIsLoading(true)
@@ -35,11 +38,15 @@ function ProductDetail(props){
             <h2>{product.name}</h2>
             <img src={product.photo_url} 
                 style={{ maxWidth: 300,
-                         maxHeight: 300 }}></img>
+                         maxHeight: 300}}></img>
             <h4>${product.price}</h4>
             <p>{product.description}</p>
             <p className="stock">Stock: {product.stock}</p>
-            <Button variant="success" className="mb-2" onClick={handleClick}>Comprar</Button><br></br>
+            {context.login ?
+            <div>
+            <Button variant="success" className="mb-2" onClick={handleClick}>Comprar</Button><br></br></div>
+            : null
+            }
             <Link to={'/'} style={{textDecoration:'none'}}>
                 <Button variant="primary" className="btn-sm">Volver al home</Button>
             </Link>
