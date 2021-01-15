@@ -7,12 +7,11 @@ import Page404 from "./Page404"
 
 function ProductDetail(props){
     const [ product, setProduct ] = useState({})
-    const [ isLoading, setIsLoading ] = useState(false)
+    const [ isLoading, setIsLoading ] = useState(true)
 
     const context = useContext(AppContext)
 
     useEffect(()=>{
-        setIsLoading(true)
         firebase.db.doc("Productos/"+props.match.params.number)
         .get()
         .then(doc =>{
@@ -31,6 +30,7 @@ function ProductDetail(props){
         e.target.style.color="green"
     }
     
+    // Renders
     if (isLoading) {
         return <p className="loader">Loading...</p>
     }
