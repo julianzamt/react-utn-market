@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-utn-market/static/css/main.c8a02ed4.chunk.css",
-    "main.js": "/react-utn-market/static/js/main.0dbdf117.chunk.js",
-    "main.js.map": "/react-utn-market/static/js/main.0dbdf117.chunk.js.map",
+    "main.js": "/react-utn-market/static/js/main.d1bfecae.chunk.js",
+    "main.js.map": "/react-utn-market/static/js/main.d1bfecae.chunk.js.map",
     "runtime-main.js": "/react-utn-market/static/js/runtime-main.1877af49.js",
     "runtime-main.js.map": "/react-utn-market/static/js/runtime-main.1877af49.js.map",
     "static/css/2.1a02f21c.chunk.css": "/react-utn-market/static/css/2.1a02f21c.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.1a02f21c.chunk.css",
     "static/js/2.51e0dc37.chunk.js",
     "static/css/main.c8a02ed4.chunk.css",
-    "static/js/main.0dbdf117.chunk.js"
+    "static/js/main.d1bfecae.chunk.js"
   ]
 }
