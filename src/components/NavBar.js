@@ -21,7 +21,7 @@ function NavBar(){
                         { 
                             context.login &&
                             <>
-                            <Nav.Link>Hola, {context.username}</Nav.Link>
+                            {context.username? <Nav.Link>Hola, {context.username}</Nav.Link>: null}
                             <Nav.Link as={Link} to={'/'}><FontAwesomeIcon icon={faHome} /> </Nav.Link>
                             <Nav.Link onClick={context.logoutUser}><FontAwesomeIcon icon={faSignOutAlt} /></Nav.Link>
                             </>
