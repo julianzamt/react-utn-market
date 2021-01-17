@@ -23,6 +23,8 @@ function Registro(){
     const history = useHistory()
     const context = useContext(AppContext)
 
+    let userId = ""
+
     function handleSubmit(e){
         setSpinner(true)
         const email = form.email
@@ -38,26 +40,31 @@ function Registro(){
                 userId: data.user.uid
             })
             context.registryFeedbackIn()
-        })
-        .then(() => {
-            const email = form.email
-            const password = form.password
-            firebase.auth.signInWithEmailAndPassword(email, password)
-            .then((querySnapshot) => {
-                history.push("/")
-                const data = querySnapshot.docs.map((doc) => ({
-                    ...doc.data()
-                }))
-                console.log(data)
-                context.setUsername(data[0].username) 
+            })
+            .then(() => {
+                const email = form.email
+                const password = form.password
+                return (firebase.auth.signInWithEmailAndPassword(email, password))
+                .then((data) => {
+                    context.loginUser()
+                    userId = data.user.uid
+                    return (firebase.db.collection("Usuarios").where("userId", "==", userId).get())
+                })
+                .then((querySnapshot) => {
+                    const data = querySnapshot.docs.map((doc) => ({
+                        ...doc.data()
+                    }))
+                    localStorage.setItem("username", data[0].username)
+                    context.setUsername(localStorage.getItem("username"))
+                    setSpinner(false)
+                    history.push("/")
+                })
+            })
+            .catch((err) => {
+                setError(true)
+                setErrorMessage(err.message)
                 setSpinner(false)
             })
-        })
-        .catch((err) => {
-            setError(true)
-            setErrorMessage(err.message)
-            setSpinner(false)
-        })
         e.preventDefault()
         return
     }

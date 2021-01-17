@@ -22,13 +22,13 @@ const Footer = () => {
                     © 2021 &nbsp;
                     <span id="footer-logo">Julian Zamt &nbsp;</span>
                     &nbsp;
-                    <Link style={{ color: "inherit", fontSize: 15 }} to={{pathname: "https://github.com/julizamt"}} target="_blank" >
+                    <a style={{ color: "inherit", fontSize: 15 }} href="https://github.com/julizamt" target="_blank" >
                         <FontAwesomeIcon icon={faGithub} />
-                    </Link>
+                    </a>
                     &nbsp; &nbsp;
-                    <Link style={{ color: "inherit", fontSize: 15 }} to={{pathname: "https://www.instagram.com/julianzamt"}} target="_blank" >
+                    <a style={{ color: "inherit", fontSize: 15 }} href="https://www.instagram.com/julianzamt" target="_blank" >
                         <FontAwesomeIcon icon={faInstagram} />
-                    </Link>
+                    </a>
                 </p>
                 </div>
             </Col>
