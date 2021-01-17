@@ -35,8 +35,6 @@ code {
   border-radius: 5px;
   padding: 1em;
   margin: 1em;
-  -webkit-box-shadow: 5px 5px 15px 5px #000000;
-  box-shadow: 5px 5px 5px #9d9d9d;
 }
 
 .loader {

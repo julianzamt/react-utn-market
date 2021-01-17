@@ -1,5 +1,6 @@
 {
-  "name": "utn-mod2-un2",
+  "name": "TruchiMarket-utn",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
