@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
@@ -22,11 +21,11 @@ const Footer = () => {
                     © 2021 &nbsp;
                     <span id="footer-logo">Julian Zamt &nbsp;</span>
                     &nbsp;
-                    <a style={{ color: "inherit", fontSize: 15 }} href="https://github.com/julizamt" target="_blank" >
+                    <a style={{ color: "inherit", fontSize: 15 }} href="https://github.com/julizamt" rel="noreferrer" target="_blank" >
                         <FontAwesomeIcon icon={faGithub} />
                     </a>
                     &nbsp; &nbsp;
-                    <a style={{ color: "inherit", fontSize: 15 }} href="https://www.instagram.com/julianzamt" target="_blank" >
+                    <a style={{ color: "inherit", fontSize: 15 }} href="https://www.instagram.com/julianzamt" rel="noreferrer" target="_blank" >
                         <FontAwesomeIcon icon={faInstagram} />
                     </a>
                 </p>

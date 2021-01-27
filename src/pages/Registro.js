@@ -31,7 +31,6 @@ function Registro(){
         const password = form.password
         firebase.auth.createUserWithEmailAndPassword(email, password)
         .then((data) =>{
-            history.push("/")
             firebase.db.collection("Usuarios").add({
                 username: form.username,
                 first: form.first,

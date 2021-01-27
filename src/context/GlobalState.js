@@ -7,7 +7,7 @@ function GlobalState(props) {
     const [ username, setUsername ] = useState(localStorage.getItem("username"))
     const [ logoutMessage, setLogoutMessage ] = useState(false)
     const [ registryFeedback, setRegistryFeedback ] = useState(false)
-    const [ validProducts, setValidProducts ] = useState("")
+    const [ cartItems, setCartItems ] = useState([])
     const history = useHistory()
 
     
@@ -20,6 +20,8 @@ function GlobalState(props) {
         setLogoutMessage(true)
         registryFeedbackOut()
         localStorage.clear()
+        setUsername(null)
+        setCartItems([])
         history.push("/login")
     }
     const logoutFeedbackIn = () => {
@@ -33,6 +35,20 @@ function GlobalState(props) {
     }
     const registryFeedbackOut = () => {
         setRegistryFeedback(false)
+    }
+    const addToCart = (newItem) => {
+        setCartItems([
+            ...cartItems,
+            newItem
+        ])
+    }
+    const removeOneFromCart = (product) => {
+        const productIndex = cartItems.findIndex(item => item.name === product.name)
+        setCartItems(cartItems.splice(productIndex, 1))
+    }
+    const removeFromCart = (product) => {
+        const updatedCart = cartItems.filter(item => item.name !== product.name)
+        setCartItems(updatedCart)
     }
 
     return(
@@ -49,8 +65,10 @@ function GlobalState(props) {
                 registryFeedbackOut: registryFeedbackOut,
                 username: username,
                 setUsername: setUsername,
-                validProducts: validProducts,
-                setValidProducts: setValidProducts
+                addToCart: addToCart,
+                removeFromCart: removeFromCart,
+                cartItems: cartItems,
+                removeOneFromCart: removeOneFromCart
             }}
         >
             {props.children}

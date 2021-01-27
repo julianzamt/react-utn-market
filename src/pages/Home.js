@@ -4,6 +4,7 @@ import CardDeck from 'react-bootstrap/CardDeck'
 import firebase from "../Config/firebase"
 import Alert from 'react-bootstrap/Alert'
 import AppContext from "../context/AppContext"
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 function Home(){
     const [ products, setProducts ] = useState("")
@@ -33,13 +34,8 @@ function Home(){
         context.registryFeedbackOut()
     }
 
-    const closeLoginAlert = () => {
-        context.loginFeedbackOut()
-    }
-
-
     if (isLoading) {
-        return <p className="loader">Loading...</p>
+        return <LinearProgress />
     }
     else {
         return (

@@ -69,3 +69,62 @@ code {
   font-size: 10px;
   margin: 0;
 }
+.quantity-button {
+  flex-basis: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.cart-title {
+  font-family: "Orbitron", sans-serif;
+}
+
+.delete-button:hover {
+  animation: grow 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+@keyframes grow {
+  100% {
+    transform: scale(1.2);
+  }
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+.cart-item-wrapper {
+  height: 100px;
+}
+
+.cart-item-animation-exit {
+  opacity: 1;
+  height: 100px;
+}
+
+.cart-item-animation-exit-active {
+  opacity: 0;
+  height: 0;
+  transition: opacity 1s, height 0.5s 1s ease-out;
+}
+
+.empty-cart {
+  height: 100px;
+}
+
+.empty-cart-enter {
+  opacity: 0;
+}
+
+.empty-cart-enter-active {
+  opacity: 1;
+  transition: opacity 2s;
+}

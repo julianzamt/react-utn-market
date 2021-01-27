@@ -3,11 +3,13 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 import firebase from '../Config/firebase'
 import React, { useState, useEffect, useContext } from "react"
-import AppContext from "../context/AppContext"
 import Page404 from "./Page404"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import AddToCartButton from "../components/AddToCartButton"
+import AppContext from "../context/AppContext"
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 function ProductDetail(props){
     const [ product, setProduct ] = useState({})
@@ -32,16 +34,10 @@ function ProductDetail(props){
             setIsLoading(false)
         })
     }, [])
-   
-    function handleClick(e){
-        e.target.innerHTML = "Gracias por su compra!"
-        e.target.style.backgroundColor = "yellow"
-        e.target.style.color="green"
-    }
     
     // Renders
     if (isLoading) {
-        return <p className="loader">Loading...</p>
+        return <LinearProgress />
     }
     else if (product === undefined) {
         return <Page404 />
@@ -58,14 +54,10 @@ function ProductDetail(props){
                             <Card.Text>
                                 <h4>${product.price}</h4>
                                 <p className="small">{product.description}</p>
-                                <p className="small">Stock: {product.stock}</p>
                             </Card.Text>    
                         </Card.Body>
-                        {context.login ?
-                        <div>
-                            <Button variant="outline-success" className="mb-2" style={{marginTop: -30}} onClick={handleClick}>Comprar</Button>
-                        </div>
-                        : null
+                        {context.login &&
+                            <AddToCartButton product={product}/>
                         }
                         <Link to={'/'} style={{textDecoration:'none'}}>
                             <Button variant="outline-secondary" className="btn-sm mb-2">Volver al home</Button>
@@ -73,8 +65,7 @@ function ProductDetail(props){
                     </Card>
                     </Col>
                 </Row>
-            </Container>
-            
+            </Container>    
         )
     }
 }
