@@ -44,7 +44,10 @@ function GlobalState(props) {
     }
     const removeOneFromCart = (product) => {
         const productIndex = cartItems.findIndex(item => item.name === product.name)
-        setCartItems(cartItems.splice(productIndex, 1))
+        setCartItems(prevState => {
+            prevState.splice(productIndex, 1)
+            console.log(prevState)
+            return prevState})
     }
     const removeFromCart = (product) => {
         const updatedCart = cartItems.filter(item => item.name !== product.name)
