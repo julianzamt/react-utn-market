@@ -15,8 +15,7 @@ function Producto(props){
             <Card.Title>{props.name}</Card.Title>
             <Card.Text>
                 ${props.price}
-            </Card.Text>
-            
+            </Card.Text>    
         </Card.Body>
         <Link to={"/" + props.id}>
             <Button variant="outline-secondary" onClick={context.registryFeedbackOut}>Ver Detalle</Button>

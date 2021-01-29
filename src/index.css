@@ -37,15 +37,6 @@ code {
   margin: 1em;
 }
 
-.loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 5em;
-  text-shadow: 2px;
-}
-
 #logo {
   max-height: 2em;
   max-width: 2em;
@@ -80,14 +71,14 @@ code {
   font-family: "Orbitron", sans-serif;
 }
 
-.delete-button:hover {
-  animation: grow 0.5s ease-out;
+.grow-button:hover {
+  animation: grow 0.3s;
   animation-fill-mode: both;
 }
 
 @keyframes grow {
   100% {
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
 }
 
@@ -116,15 +107,52 @@ code {
   transition: opacity 1s, height 0.5s 1s ease-out;
 }
 
-.empty-cart {
-  height: 100px;
-}
-
-.empty-cart-enter {
+.empty {
   opacity: 0;
 }
 
-.empty-cart-enter-active {
+.empty-active {
   opacity: 1;
-  transition: opacity 2s;
+  transition: opacity 1s ease-out;
+}
+
+/* Final Image Flip */
+
+.perfil-container {
+  position: relative;
+  left: calc(50% - 75px);
+  background-color: transparent;
+  perspective: 1000px;
+  height: 150px;
+  width: 150px;
+}
+
+.perfil-inner {
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.perfil-container:hover .perfil-inner {
+  transform: rotateY(180deg);
+}
+
+.perfil-front {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.perfil-back {
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.perfil-back {
+  transform: rotateY(180deg);
+}
+
+.clearfix {
+  clear: both;
 }

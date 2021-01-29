@@ -1,15 +1,13 @@
 import { CSSTransition } from "react-transition-group"
+import React, { useState, useEffect } from "react"
 
-const EmptyCart = (props) => {
+const EmptyCart = () => {
+    const [ empty, setEmpty ] = useState("empty")
+    
+    useEffect(()=> setEmpty("empty-active"), [])
 
     return (
-        <CSSTransition
-            in={props.visible}
-            timeout={500}
-            classNames="empty-cart"
-        >
-            <div className="empty-cart">El carrito se encuentra vacío</div>
-        </CSSTransition>
+        <p className={empty}>El carrito se encuentra vacío.</p>
     )
 }
 

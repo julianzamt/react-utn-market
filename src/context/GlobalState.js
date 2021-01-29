@@ -8,6 +8,7 @@ function GlobalState(props) {
     const [ logoutMessage, setLogoutMessage ] = useState(false)
     const [ registryFeedback, setRegistryFeedback ] = useState(false)
     const [ cartItems, setCartItems ] = useState([])
+    const [ cartShow, setCartShow] = useState(false);
     const history = useHistory()
 
     
@@ -46,8 +47,8 @@ function GlobalState(props) {
         const productIndex = cartItems.findIndex(item => item.name === product.name)
         setCartItems(prevState => {
             prevState.splice(productIndex, 1)
-            console.log(prevState)
-            return prevState})
+            const updatedCart = [...prevState]
+            return updatedCart})
     }
     const removeFromCart = (product) => {
         const updatedCart = cartItems.filter(item => item.name !== product.name)

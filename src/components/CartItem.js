@@ -50,8 +50,8 @@ const CartItem = (props) => {
                     Precio: ${precioFinal}
                 </Col>
                 <Col>
-                <IconButton onClick={handleClick} className="delete-button">
-                    <DeleteIcon className="delete-button"/>
+                <IconButton onClick={handleClick} className="grow-button">
+                    <DeleteIcon/>
                 </IconButton>
                 </Col>
             </Row>

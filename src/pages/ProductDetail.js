@@ -17,11 +17,6 @@ function ProductDetail(props){
 
     const context = useContext(AppContext)
 
-    const styles = {
-        marginLeft: "20%",
-        marginRight: "20%"
-    }
-
     useEffect(()=>{
         firebase.db.doc("Productos/"+props.match.params.number)
         .get()
@@ -44,28 +39,27 @@ function ProductDetail(props){
     }
     else {
         return (
-            <Container>
-                <Row style={{height: "80vh"}}className="align-items-center">
-                    <Col>
-                    <Card style={styles} className="text-center">
-                        <Card.Body>
-                            <Card.Title>{product.name}</Card.Title>
-                            <Card.Img style={{maxHeight:"auto", maxWidth:300, margin:"auto"}} variant="top" src={product.photo_url} />
-                            <Card.Text>
-                                <h4>${product.price}</h4>
-                                <p className="small">{product.description}</p>
-                            </Card.Text>    
-                        </Card.Body>
-                        {context.login &&
-                            <AddToCartButton product={product}/>
-                        }
-                        <Link to={'/'} style={{textDecoration:'none'}}>
-                            <Button variant="outline-secondary" className="btn-sm mb-2">Volver al home</Button>
-                        </Link>
-                    </Card>
-                    </Col>
-                </Row>
-            </Container>    
+            <Card className="text-center" style={{
+                marginTop: "3%",
+                marginLeft: "20%",
+                marginRight: "20%",
+                marginBottom: "2%",
+                }}>
+                <Card.Body>
+                    <Card.Title>{product.name}</Card.Title>
+                    <Card.Img style={{maxHeight:"auto", maxWidth:300, margin:"auto"}} variant="top" src={product.photo_url} />
+                    <Card.Text>
+                        <h4>${product.price}</h4>
+                        <p className="small">{product.description}</p>
+                    </Card.Text>    
+                </Card.Body>
+                {context.login &&
+                    <AddToCartButton product={product}/>
+                }
+                <Link to={'/'} style={{textDecoration:'none'}}>
+                    <Button variant="outline-secondary" className="btn-sm mb-2">Volver al home</Button>
+                </Link>
+            </Card> 
         )
     }
 }

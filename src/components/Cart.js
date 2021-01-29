@@ -4,10 +4,9 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import CartItem from "./CartItem"
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import EmptyCart from "./EmptyCart"
 import CartTotal from "./CartTotal"
+import Goodbye from "./Goodbye"
 
 function Cart(props) {
     const context = useContext(AppContext)
@@ -29,17 +28,23 @@ function Cart(props) {
         />)
 
     const [goodbye, setGoodbye] = useState(false)
+    /* Flag for rendering Goodbye on Cart exit
+    only if "Iniciar compra" is clicked */
+    const [ flag, setFlag ] = useState(false)
 
-    const showGoodbye = () => {
-      setGoodbye(!goodbye)
+    const handleGoodbye = ()=>{
+      setFlag(true)
+      props.onHide()
     }
 
     return (
+      <div>
       <Modal
       {...props}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      onExited={flag ? ()=>setGoodbye(true) : null}
       >
       <Modal.Header as="section" closeButton>
         <Modal.Title as="h4" bsPrefix="cart-title">
@@ -48,15 +53,20 @@ function Cart(props) {
       </Modal.Header>
       <Modal.Body className="text-center">
         <Container>
-            {context.cartItems.length === 0 ? <EmptyCart visible={true}/>
+            {context.cartItems.length === 0 ? 
+            <EmptyCart visible={true}/>
             : cartItems}
             <CartTotal />
           </Container>
         </Modal.Body>
         <Modal.Footer className="justify-content-center">
-          <Button style={{width: "100%"}}variant="outline-success" onClick={showGoodbye}>Iniciar Checkout</Button>
+          {context.cartItems.length === 0 ? 
+            <Button style={{width: "100%"}}variant="outline-secondary" disabled>Iniciar Compra</Button>
+          :<Button style={{width: "100%"}}variant="outline-secondary" onClick={handleGoodbye} name="goodbye">Iniciar Compra</Button>}
         </Modal.Footer>
       </Modal>
+      <Goodbye show={goodbye} onHide={()=>{setGoodbye(false); setFlag(false)}}/>
+      </div>
     )
 }
 
