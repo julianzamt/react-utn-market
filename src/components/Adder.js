@@ -21,12 +21,12 @@ const Adder = (props) => {
 
     return(
         <div>
-            <IconButton onClick={handleClick("plus")}>
-                <AddCircleOutlineIcon />
-            </IconButton>
-                {props.cantidad}
             <IconButton onClick={handleClick("minus")}>
                 <RemoveCircleOutlineIcon />
+            </IconButton>
+                {props.cantidad}
+            <IconButton onClick={handleClick("plus")}>
+                <AddCircleOutlineIcon />
             </IconButton>
         </div>
     )
