@@ -1,4 +1,3 @@
-import { CSSTransition } from "react-transition-group"
 import React, { useState, useEffect } from "react"
 
 const EmptyCart = () => {

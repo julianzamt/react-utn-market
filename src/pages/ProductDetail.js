@@ -4,9 +4,6 @@ import Card from 'react-bootstrap/Card'
 import firebase from '../Config/firebase'
 import React, { useState, useEffect, useContext } from "react"
 import Page404 from "./Page404"
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import AddToCartButton from "../components/AddToCartButton"
 import AppContext from "../context/AppContext"
 import LinearProgress from '@material-ui/core/LinearProgress'
@@ -28,7 +25,7 @@ function ProductDetail(props){
             console.log(err)
             setIsLoading(false)
         })
-    }, [])
+    }, [props.match.params.number])
     
     // Renders
     if (isLoading) {

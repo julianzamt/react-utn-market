@@ -24,13 +24,13 @@ const Goodbye = (props) => {
         <div className="perfil-container">
             <div className="perfil-inner">
                 <div className="perfil-front">
-                    <img src={perfil} className="perfil" style={{
+                    <img src={perfil} className="perfil" alt="designer_photo" style={{
                         border: "1px solid lightgrey",
                         borderRadius: "50%" }}    
                     />
                 </div>
                 <div className="perfil-back">
-                <img src={perfil2} className="perfil" style={{
+                <img src={perfil2} className="perfil" alt="designer_photo_alt" style={{
                         border: "1px solid lightgrey",
                         borderRadius: "50%" }}    
                     />

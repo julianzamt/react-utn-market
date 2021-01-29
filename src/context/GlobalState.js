@@ -8,7 +8,6 @@ function GlobalState(props) {
     const [ logoutMessage, setLogoutMessage ] = useState(false)
     const [ registryFeedback, setRegistryFeedback ] = useState(false)
     const [ cartItems, setCartItems ] = useState([])
-    const [ cartShow, setCartShow] = useState(false);
     const history = useHistory()
 
     

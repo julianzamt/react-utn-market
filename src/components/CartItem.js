@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useContext } from "react"
 import AppContext from "../context/AppContext"
 import { CSSTransition } from "react-transition-group"
 import Row from 'react-bootstrap/Row'
@@ -37,7 +37,7 @@ const CartItem = (props) => {
         >
             <Row className="cart-item">
                 <Col xs={12} md={6} lg={2}>
-                    <img src={props.photo_url} style={img_style}/>
+                    <img src={props.photo_url} style={img_style} alt="product_photo"/>
                 </Col>
                 <Col xs={12} md={6} lg={3}>
                     {props.name}

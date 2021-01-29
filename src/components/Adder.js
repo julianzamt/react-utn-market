@@ -2,7 +2,7 @@
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import IconButton from '@material-ui/core/IconButton';
-import React, { useContext, useEffect } from "react"
+import React, { useContext } from "react"
 import AppContext from "../context/AppContext"
 
 const Adder = (props) => {
