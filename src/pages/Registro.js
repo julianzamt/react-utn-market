@@ -27,8 +27,25 @@ function Registro(){
 
     function handleSubmit(e){
         setSpinner(true)
+        setError(false)
         const email = form.email
         const password = form.password
+        const confirmation = form.confirmation
+        if (password.length >= 6 && password !== confirmation) {
+            setError(true)
+            setErrorMessage("Password and confirmation must match")
+            e.preventDefault()
+            setSpinner(false)
+            return
+        }
+        else if (password.length < 6) {
+            setError(true)
+            setErrorMessage("Password must have 6 characters or more")
+            e.preventDefault()
+            setSpinner(false)
+            return
+        }
+        else {
         firebase.auth.createUserWithEmailAndPassword(email, password)
         .then((data) =>{
             firebase.db.collection("Usuarios").add({
@@ -61,9 +78,10 @@ function Registro(){
             })
             .catch((err) => {
                 setError(true)
-                setErrorMessage(err.message)
+                setErrorMessage("Sorry, there was an error processing the registration. Please try again")
                 setSpinner(false)
             })
+        }
         e.preventDefault()
         return
     }
@@ -88,7 +106,7 @@ function Registro(){
             <Form.Control type="text" name="first" value={form.first} placeholder="Name" onChange={handleChange} /><br></br>
             <Form.Control type="text" name="last" value={form.last} placeholder="Lastname" onChange={handleChange} /><br></br>
             <Form.Control type="email" name="email" value={form.email} placeholder="Email" onChange={handleChange} /><br></br>
-            <Form.Control type="password" name="password" value={form.password} placeholder="Password" onChange={handleChange} /><br></br>
+            <Form.Control type="password" name="password" value={form.password} placeholder="Password (6+ characters)" onChange={handleChange} /><br></br>
             <Form.Control type="password" name="confirmation" value={form.confirmation} placeholder="Password confirmation" onChange={handleChange} /><br></br>
             <Button variant="primary" type="submit">Register
             {spinner ? <Spinner animation="border" variant="light" size="sm" className="ml-2" /> : null } </Button>
