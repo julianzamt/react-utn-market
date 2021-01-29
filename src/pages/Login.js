@@ -80,7 +80,7 @@ function Login(){
                 <Form.Control type="text" name="email" value={form.email} placeholder="Email" onChange={handleChange} /><br></br>
                 <Form.Control type="password" name="password" value={form.password} placeholder="Password" onChange={handleChange} /><br></br>
                 <Button variant="primary" type="submit">Login  
-                {spinner ? <Spinner animation="border" variant="light" size="sm" /> : null } </Button>
+                {spinner ? <Spinner className="ml-2" animation="border" variant="light" size="sm" /> : null } </Button>
             </Form>
         </div>
     )
