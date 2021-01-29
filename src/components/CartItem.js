@@ -35,27 +35,25 @@ const CartItem = (props) => {
             classNames="cart-item-animation"
             onExited={()=>exit()}
         >
-        <div className="cart-item-wrapper">
             <Row className="cart-item">
-                <Col>
+                <Col xs={12} md={6} lg={2}>
                     <img src={props.photo_url} style={img_style}/>
                 </Col>
-                <Col xs={4}>
+                <Col xs={12} md={6} lg={3}>
                     {props.name}
                 </Col>
-                <Col xs={3}>
-                    Cantidad: <Adder producto={props} cantidad={productQuant.length}/>
+                <Col xs={12} md={4} lg={3}>
+                    <span className="small">Quantity:</span> <Adder producto={props} cantidad={productQuant.length}/>
                 </Col>
-                <Col>
-                    Precio: ${precioFinal}
+                <Col md={4} lg={2}>
+                    Price: ${precioFinal}
                 </Col>
-                <Col>
-                <IconButton onClick={handleClick} className="grow-button">
-                    <DeleteIcon/>
-                </IconButton>
+                <Col md={4} lg={1}>
+                    <IconButton onClick={handleClick} className="grow-button">
+                        <DeleteIcon/>
+                    </IconButton>
                 </Col>
             </Row>
-        </div>
         </CSSTransition>
     )
 }

@@ -48,7 +48,7 @@ function Cart(props) {
       >
       <Modal.Header as="section" closeButton>
         <Modal.Title as="h4" bsPrefix="cart-title">
-          Carrito de compras
+          Shopping Cart
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="text-center">
@@ -61,8 +61,8 @@ function Cart(props) {
         </Modal.Body>
         <Modal.Footer className="justify-content-center">
           {context.cartItems.length === 0 ? 
-            <Button style={{width: "100%"}}variant="outline-secondary" disabled>Iniciar Compra</Button>
-          :<Button style={{width: "100%"}}variant="outline-secondary" onClick={handleGoodbye} name="goodbye">Iniciar Compra</Button>}
+            <Button style={{width: "100%"}}variant="outline-secondary" disabled>Proceed to checkout</Button>
+          :<Button style={{width: "100%"}}variant="outline-secondary" onClick={handleGoodbye} name="goodbye">Proceed to checkout</Button>}
         </Modal.Footer>
       </Modal>
       <Goodbye show={goodbye} onHide={()=>{setGoodbye(false); setFlag(false)}}/>

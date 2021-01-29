@@ -15,8 +15,8 @@ const Goodbye = (props) => {
           centered
         >
         <Modal.Header as="section">
-        <Modal.Title as="h4" bsPrefix="cart-title" style={{margin:"auto"}}>
-          TruchiMarket
+        <Modal.Title as="h4" style={{margin:"auto"}}>
+          Thanks for visiting <span className="cart-title">TruchiMarket</span>
         </Modal.Title>
       </Modal.Header>
         <Modal.Body className="text-center">
@@ -55,7 +55,7 @@ const Goodbye = (props) => {
         
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-secondary" onClick={props.onHide}>Volver al market</Button>
+          <Button variant="outline-secondary" onClick={props.onHide}>Back to market</Button>
         </Modal.Footer>
         </Modal>
     )

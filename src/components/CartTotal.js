@@ -11,11 +11,11 @@ const CartTotal = () => {
 
     return (
         <Row className="cart-item">
-            <Col>
+            <Col xs={12} sm={6}>
                 <h4>Total:</h4>
             </Col>
-            <Col>
-                <h3>${cartTotal}</h3>
+            <Col xs={12} sm={6}>
+                <h4>${cartTotal}</h4>
             </Col>
         </Row> 
     )

@@ -57,7 +57,7 @@ function ProductDetail(props){
                     <AddToCartButton product={product}/>
                 }
                 <Link to={'/'} style={{textDecoration:'none'}}>
-                    <Button variant="outline-secondary" className="btn-sm mb-2">Volver al home</Button>
+                    <Button variant="outline-secondary" className="btn-sm mb-2">Home</Button>
                 </Link>
             </Card> 
         )

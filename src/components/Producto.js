@@ -18,7 +18,7 @@ function Producto(props){
             </Card.Text>    
         </Card.Body>
         <Link to={"/" + props.id}>
-            <Button variant="outline-secondary" onClick={context.registryFeedbackOut}>Ver Detalle</Button>
+            <Button variant="outline-secondary" onClick={context.registryFeedbackOut}>See Details</Button>
         </Link>
     </Card>
     )

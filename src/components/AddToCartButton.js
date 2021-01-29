@@ -23,11 +23,11 @@ const AddToCartButton = (props) => {
         <div>
             {context.cartItems.some(item => item.name === props.product.name)?
             <div> 
-            <Button variant="outline-info" name="add-another" className="btn-sm mb-2" onClick={handleClick}>Agregar otro</Button>
-            <p className="small">Producto agregado. <Link onClick={handleCartClick}>Ver Carrito</Link></p>
+            <Button variant="outline-info" name="add-another" className="btn-sm mb-2" onClick={handleClick}>Add another</Button>
+            <p className="small">Added to cart. <Link onClick={handleCartClick}>View it</Link></p>
             </div>
             : 
-            <Button variant="outline-success" name="add" className="btn-sm mb-2" onClick={handleClick}>Agregar al carrito</Button>
+            <Button variant="outline-success" name="add" className="btn-sm mb-2" onClick={handleClick}>Add to cart</Button>
             }
             <Cart
                 show={modalShow}

@@ -7,7 +7,7 @@ const EmptyCart = () => {
     useEffect(()=> setEmpty("empty-active"), [])
 
     return (
-        <p className={empty}>El carrito se encuentra vacío.</p>
+        <p className={empty}>Your cart is empty.</p>
     )
 }
 

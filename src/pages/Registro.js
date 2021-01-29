@@ -81,17 +81,17 @@ function Registro(){
 
     return (
         <div className="container mt-3 text-center">
-        <h2>Crear cuenta nueva</h2>
+        <h2>Create new account</h2>
         {error ? <Alert variant="danger">{errorMessage}</Alert> : null }
         <Form onSubmit={handleSubmit}>
-            <Form.Control type="text" name="username" value={form.username} placeholder="Nombre de usuario" onChange={handleChange} /><br></br>
-            <Form.Control type="text" name="first" value={form.first} placeholder="Nombre" onChange={handleChange} /><br></br>
-            <Form.Control type="text" name="last" value={form.last} placeholder="Apellido" onChange={handleChange} /><br></br>
+            <Form.Control type="text" name="username" value={form.username} placeholder="Username" onChange={handleChange} /><br></br>
+            <Form.Control type="text" name="first" value={form.first} placeholder="Name" onChange={handleChange} /><br></br>
+            <Form.Control type="text" name="last" value={form.last} placeholder="Lastname" onChange={handleChange} /><br></br>
             <Form.Control type="email" name="email" value={form.email} placeholder="Email" onChange={handleChange} /><br></br>
-            <Form.Control type="password" name="password" value={form.password} placeholder="Contraseña" onChange={handleChange} /><br></br>
-            <Form.Control type="password" name="confirmation" value={form.confirmation} placeholder="Confirme la contraseña" onChange={handleChange} /><br></br>
-            <Button variant="primary" type="submit">Registrarse 
-            {spinner ? <Spinner animation="border" variant="light" size="sm" /> : null } </Button>
+            <Form.Control type="password" name="password" value={form.password} placeholder="Password" onChange={handleChange} /><br></br>
+            <Form.Control type="password" name="confirmation" value={form.confirmation} placeholder="Password confirmation" onChange={handleChange} /><br></br>
+            <Button variant="primary" type="submit">Register
+            {spinner ? <Spinner animation="border" variant="light" size="sm" className="ml-2" /> : null } </Button>
         </Form>
         </div>
     )

@@ -71,14 +71,14 @@ function Login(){
         <div className="container mt-3 text-center" >
             <h2>Login</h2>
             {context.logoutMessage ? 
-            <Alert variant="info" onClose={closeAlert} dismissible>Gracias por utilizar nuestros servicios</Alert>  
+            <Alert variant="info" onClose={closeAlert} dismissible>Thanks for visiting us. See you soon!</Alert>  
             : null }
             {errorFeedback ?
             <Alert variant="danger" onClose={closeError} dismissible>{error}</Alert>
             : null }   
             <Form onSubmit={handleSubmit}>
                 <Form.Control type="text" name="email" value={form.email} placeholder="Email" onChange={handleChange} /><br></br>
-                <Form.Control type="password" name="password" value={form.password} placeholder="Contraseña" onChange={handleChange} /><br></br>
+                <Form.Control type="password" name="password" value={form.password} placeholder="Password" onChange={handleChange} /><br></br>
                 <Button variant="primary" type="submit">Login  
                 {spinner ? <Spinner animation="border" variant="light" size="sm" /> : null } </Button>
             </Form>

@@ -30,7 +30,7 @@ function NavBar(){
                     { 
                         context.login &&
                         <>
-                        {context.username !== null ? <Nav.Link>Hola, {context.username}</Nav.Link> : null}
+                        {context.username !== null ? <Nav.Link>Hi, {context.username}</Nav.Link> : null}
                         <Nav.Link onClick={handleCartClick}><FontAwesomeIcon icon={faShoppingCart} /><span className="small">({context.cartItems ? context.cartItems.length : 0})</span></Nav.Link>
                         <Nav.Link as={Link} to={'/'} onClick={context.registryFeedbackOut}><FontAwesomeIcon icon={faHome} /> </Nav.Link>
                         <Nav.Link onClick={context.logoutUser}><FontAwesomeIcon icon={faSignOutAlt} /></Nav.Link>
@@ -41,7 +41,7 @@ function NavBar(){
                         <>
                         <Nav.Link as={Link} to={'/'}><FontAwesomeIcon icon={faHome} /></Nav.Link>
                         <Nav.Link as={Link} to={'/login'}>Login</Nav.Link>
-                        <Nav.Link as={Link} to={'/registro'}>Registro</Nav.Link>
+                        <Nav.Link as={Link} to={'/registro'}>Register</Nav.Link>
                         </>
                     }
                     </Nav>

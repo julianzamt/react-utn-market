@@ -1,3 +1,4 @@
+/* Resets */
 * {
   box-sizing: border-box;
 }
@@ -16,38 +17,20 @@ body {
   height: 100%;
 }
 
-#root {
-  min-height: 100vh; /* will cover the 100% of viewport */
-  overflow: hidden;
-  display: block;
-  position: relative;
-  padding-bottom: 50px; /* height of your footer */
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-.producto {
-  text-align: center;
-  border: 1px solid gray;
-  border-radius: 5px;
-  padding: 1em;
-  margin: 1em;
+#root {
+  min-height: 100vh; /* will cover the 100% of viewport */
+  overflow: hidden;
+  display: block;
+  position: relative;
+  padding-bottom: 50px;
 }
 
-#logo {
-  max-height: 2em;
-  max-width: 2em;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-#header {
-  font-family: "Orbitron", sans-serif;
-}
-
+/* Footer */
 #footer-logo {
   font-family: "Orbitron", sans-serif;
   font-size: x-small;
@@ -60,6 +43,33 @@ code {
   font-size: 10px;
   margin: 0;
 }
+
+/* Header */
+#logo {
+  max-height: 2em;
+  max-width: 2em;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#header {
+  font-family: "Orbitron", sans-serif;
+}
+
+/* Home */
+.producto {
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 1em;
+}
+
+/* Cart */
+.cart-title {
+  font-family: "Orbitron", sans-serif;
+}
+
 .quantity-button {
   flex-basis: 30px;
   height: 30px;
@@ -67,15 +77,10 @@ code {
   text-align: center;
 }
 
-.cart-title {
-  font-family: "Orbitron", sans-serif;
-}
-
 .grow-button:hover {
   animation: grow 0.3s;
   animation-fill-mode: both;
 }
-
 @keyframes grow {
   100% {
     transform: scale(1.3);
@@ -92,19 +97,13 @@ code {
   padding: 0.5em;
 }
 
-.cart-item-wrapper {
-  height: 100px;
-}
-
 .cart-item-animation-exit {
   opacity: 1;
-  height: 100px;
 }
 
 .cart-item-animation-exit-active {
   opacity: 0;
-  height: 0;
-  transition: opacity 1s, height 0.5s 1s ease-out;
+  transition: opacity 1s ease-out;
 }
 
 .empty {

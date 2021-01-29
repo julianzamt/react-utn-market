@@ -41,7 +41,7 @@ function Home(){
         return (
         <div className="text-center">
             {context.registryFeedback ? 
-            <Alert variant="success" onClose={closeRegistryAlert} dismissible>Usuario/a registrado/a con éxito</Alert> 
+            <Alert variant="success" onClose={closeRegistryAlert} dismissible>User successfully registered and logged in.</Alert> 
             : null}
             <CardDeck style={{margin:"2em"}}>
                 {products}
