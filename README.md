@@ -1,4 +1,4 @@
-### Live demo available here: https://julizamt.github.io/react-utn-market/
+### Live demo: https://julizamt.github.io/react-utn-market/
 
 # Getting Started with Create React App
 
