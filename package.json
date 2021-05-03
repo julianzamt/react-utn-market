@@ -1,6 +1,5 @@
 {
-  "name": "TruchiMarket-utn",
-  "homepage": "http://julizamt.github.io/react-utn-market",
+  "name": "truchimarket",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
